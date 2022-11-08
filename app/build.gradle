@@ -1,0 +1,55 @@
+plugins {
+    id 'com.android.library'
+    id 'kotlin-android'
+}
+
+android {
+    compileSdkVersion 33
+    buildToolsVersion '33.0.0'
+
+    defaultConfig {
+        minSdk 24
+        targetSdk 33
+        versionCode 118
+        /** https://semver.org/spec/v2.0.0.html: МАЖОР.МИНОР.ПАТЧ
+         * МАЖОР: значительное изменение API, которое привело к потере обратной совместимости
+         * МИНОР: добавление новой функциональности, не приводящее к потере обратной совместимости. Удаление ранее
+         * деприкейченного API сюда же, т.к. считаем, что депрекейтед был устранён в клиентах давно
+         * ПАТЧ: исправления или незначительное добавление кода. Добавление нового пакета - сюда */
+        versionName "2.13"
+    }
+
+    buildTypes {
+        release {
+            // Enables code shrinking, obfuscation, and optimization for only
+            // your project's release build type.
+            minifyEnabled false
+            debuggable true
+            jniDebuggable false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8.toString()
+    }
+}
+
+dependencies {
+    // Поддержка Котлина, корутин
+    implementation 'androidx.core:core-ktx:1.9.0'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4'
+
+    // Тесты
+    implementation 'junit:junit:4.13.2'
+    implementation 'androidx.test.ext:junit:1.1.3'
+    implementation 'androidx.test.espresso:espresso-core:3.4.0'
+    implementation 'androidx.test.uiautomator:uiautomator:2.2.0'
+    implementation 'androidx.test:rules:1.4.0'
+
+    // Парсинг Json
+    implementation 'org.json:json:20220924'
+}
