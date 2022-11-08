@@ -10,13 +10,13 @@ android {
     defaultConfig {
         minSdk 24
         targetSdk 33
-        versionCode 118
+        versionCode 119
         /** https://semver.org/spec/v2.0.0.html: МАЖОР.МИНОР.ПАТЧ
          * МАЖОР: значительное изменение API, которое привело к потере обратной совместимости
          * МИНОР: добавление новой функциональности, не приводящее к потере обратной совместимости. Удаление ранее
          * деприкейченного API сюда же, т.к. считаем, что депрекейтед был устранён в клиентах давно
          * ПАТЧ: исправления или незначительное добавление кода. Добавление нового пакета - сюда */
-        versionName "2.13.0"
+        versionName "2.14.0"
     }
 
     buildTypes {
@@ -49,7 +49,4 @@ dependencies {
     implementation 'androidx.test.espresso:espresso-core:3.4.0'
     implementation 'androidx.test.uiautomator:uiautomator:2.2.0'
     implementation 'androidx.test:rules:1.4.0'
-
-    // Парсинг Json
-    implementation 'org.json:json:20220924'
 }
