@@ -56,4 +56,9 @@ class TDateTime(private val dateTime: Date) {
     fun diffBetween(tDateTime: TDateTime): Long {
         return tDateTime.dateTime.time - this.dateTime.time
     }
+
+    /** Return [this] in milliseconds */
+    fun time(): Long {
+        return this.dateTime.time
+    }
 }
