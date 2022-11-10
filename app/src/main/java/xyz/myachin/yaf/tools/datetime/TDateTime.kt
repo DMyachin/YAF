@@ -57,8 +57,8 @@ class TDateTime(private val dateTime: Date) {
         return tDateTime.dateTime.time - this.dateTime.time
     }
 
-    /** Return [this] in milliseconds */
-    fun time(): Long {
+    /** Get current time in milliseconds */
+    fun timeInMilliseconds(): Long {
         return this.dateTime.time
     }
 }
