@@ -56,4 +56,9 @@ class TDateTime(private val dateTime: Date) {
     fun diffBetween(tDateTime: TDateTime): Long {
         return tDateTime.dateTime.time - this.dateTime.time
     }
+
+    /** Get current time in milliseconds */
+    fun timeInMilliseconds(): Long {
+        return this.dateTime.time
+    }
 }
