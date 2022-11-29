@@ -50,8 +50,8 @@ object TOs {
         TShell.sendTimeSetBroadcast()
     }
 
-    fun removeFile(fileName: String) {
-        TShell.removeFile(fileName)
+    fun removeFileAtPath(filePathName: String) {
+        TShell.removeFile(filePathName)
     }
 
     /** Опущена ли панель уведомлений */
