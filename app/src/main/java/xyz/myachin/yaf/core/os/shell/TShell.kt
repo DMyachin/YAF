@@ -15,6 +15,10 @@ internal object TShell {
         suShellCommand("date $time set")
     }
 
+    internal fun removeFile(fileName: String) {
+        shellCommand("rm $fileName")
+    }
+
     internal fun sendTimeSetBroadcast() {
         suShellCommand("am broadcast -a android.intent.action.TIME_SET")
     }

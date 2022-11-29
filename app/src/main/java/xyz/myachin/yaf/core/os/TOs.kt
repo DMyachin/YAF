@@ -50,6 +50,10 @@ object TOs {
         TShell.sendTimeSetBroadcast()
     }
 
+    fun removeFile(fileName: String) {
+        TShell.removeFile(fileName)
+    }
+
     /** Опущена ли панель уведомлений */
     fun isNotificationsOpened(): Boolean {
         return tDevice.findObject(UiSelector().resourceId(notificationId)).exists()
