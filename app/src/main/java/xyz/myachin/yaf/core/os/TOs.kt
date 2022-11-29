@@ -50,9 +50,9 @@ object TOs {
         TShell.sendTimeSetBroadcast()
     }
 
-    /** Удалить файл с устройства по пути [filePathName] */
-    fun removeFileAtPath(filePathName: String) {
-        TShell.removeFile(filePathName)
+    /** Удалить файл или папку по пути [path] с рекурс */
+    fun removeTree(path: String, recursive: Boolean = false) {
+        TShell.removeTree(path, recursive)
     }
 
     /** Опущена ли панель уведомлений */

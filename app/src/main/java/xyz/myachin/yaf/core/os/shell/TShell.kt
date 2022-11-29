@@ -15,8 +15,8 @@ internal object TShell {
         suShellCommand("date $time set")
     }
 
-    internal fun removeFile(fileName: String) {
-        shellCommand("rm $fileName")
+    internal fun removeTree(fileName: String, recursive: Boolean) {
+        shellCommand("rm $fileName" + if (recursive) " -rf" else "")
     }
 
     internal fun sendTimeSetBroadcast() {
