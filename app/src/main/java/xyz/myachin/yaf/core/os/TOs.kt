@@ -50,6 +50,7 @@ object TOs {
         TShell.sendTimeSetBroadcast()
     }
 
+    /** Удалить файл с устройства по пути [filePathName] */
     fun removeFileAtPath(filePathName: String) {
         TShell.removeFile(filePathName)
     }
