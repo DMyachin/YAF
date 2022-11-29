@@ -50,6 +50,11 @@ object TOs {
         TShell.sendTimeSetBroadcast()
     }
 
+    /** Удалить файл или папку по пути [path] */
+    fun removeTree(path: String, recursive: Boolean = false) {
+        TShell.removeTree(path, recursive)
+    }
+
     /** Опущена ли панель уведомлений */
     fun isNotificationsOpened(): Boolean {
         return tDevice.findObject(UiSelector().resourceId(notificationId)).exists()

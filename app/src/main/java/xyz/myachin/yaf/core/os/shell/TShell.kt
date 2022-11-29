@@ -15,6 +15,10 @@ internal object TShell {
         suShellCommand("date $time set")
     }
 
+    internal fun removeTree(fileName: String, recursive: Boolean) {
+        shellCommand("rm $fileName" + if (recursive) " -rf" else "")
+    }
+
     internal fun sendTimeSetBroadcast() {
         suShellCommand("am broadcast -a android.intent.action.TIME_SET")
     }
