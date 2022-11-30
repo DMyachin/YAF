@@ -19,8 +19,8 @@ internal object TShell {
         shellCommand("rm $fileName" + if (recursive) " -rf" else "")
     }
 
-    internal fun renameFile(oldName: String, newName: String) {
-        shellCommand("mv $oldName $newName")
+    internal fun move(oldPath: String, newPath: String) {
+        shellCommand("mv $oldPath $newPath")
     }
 
     internal fun sendTimeSetBroadcast() {

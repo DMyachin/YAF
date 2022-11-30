@@ -55,9 +55,12 @@ object TOs {
         TShell.removeTree(path, recursive)
     }
 
-    /** Переименовать файл [oldName] в [newName] */
-    fun renameFile(oldName: String, newName: String) {
-        TShell.renameFile(oldName, newName)
+    /** Переместить файл или директорию
+     * [oldPath]: полный путь откуда переносить
+     * [newPath]: полный путь куда переносить
+     * */
+    fun moveFileOrDir(oldPath: String, newPath: String) {
+        TShell.move(oldPath, newPath)
     }
 
     /** Опущена ли панель уведомлений */
