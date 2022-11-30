@@ -55,6 +55,11 @@ object TOs {
         TShell.removeTree(path, recursive)
     }
 
+    /** Переименовать файл [oldName] в [newName] */
+    fun renameFile(oldName: String, newName: String) {
+        TShell.renameFile(oldName, newName)
+    }
+
     /** Опущена ли панель уведомлений */
     fun isNotificationsOpened(): Boolean {
         return tDevice.findObject(UiSelector().resourceId(notificationId)).exists()

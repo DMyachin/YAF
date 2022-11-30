@@ -19,6 +19,10 @@ internal object TShell {
         shellCommand("rm $fileName" + if (recursive) " -rf" else "")
     }
 
+    internal fun renameFile(oldName: String, newName: String) {
+        shellCommand("mv $oldName $newName")
+    }
+
     internal fun sendTimeSetBroadcast() {
         suShellCommand("am broadcast -a android.intent.action.TIME_SET")
     }
