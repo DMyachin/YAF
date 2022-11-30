@@ -55,6 +55,14 @@ object TOs {
         TShell.removeTree(path, recursive)
     }
 
+    /** Переместить файл или директорию
+     * [oldPath]: полный путь откуда переносить
+     * [newPath]: полный путь куда переносить
+     * */
+    fun moveFileOrDir(oldPath: String, newPath: String) {
+        TShell.move(oldPath, newPath)
+    }
+
     /** Опущена ли панель уведомлений */
     fun isNotificationsOpened(): Boolean {
         return tDevice.findObject(UiSelector().resourceId(notificationId)).exists()
