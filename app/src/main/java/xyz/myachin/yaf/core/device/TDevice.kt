@@ -15,7 +15,7 @@ import kotlin.concurrent.thread
 object TDevice {
     private val TAG = TDevice::class.java.simpleName
 
-    val screenSize: Point by lazy { Point(tDevice.displayWidth, tDevice.displayHeight) }
+    val screenSize get() = Point(tDevice.displayWidth, tDevice.displayHeight)
 
     fun takeScreenshotAsUser() {
         /*
@@ -36,18 +36,23 @@ object TDevice {
         pressDeviceBackButton()
     }
 
-    fun getRawDevice() = tDevice
+    /** Для отладки. Не использовать в реальном коде */
+    val rawDevice = tDevice
 
     fun isScreenOn() = tDevice.isScreenOn
 
-    fun wakeUp() = tDevice.wakeUp()
+    fun wakeUp() {
+        tDevice.wakeUp()
+    }
 
     fun sleep(timeout: Long = T_SHORT_WAIT) {
         tDevice.sleep()
         SystemClock.sleep(timeout)
     }
 
-    fun setOrientationNatural() = tDevice.setOrientationNatural()
+    fun setOrientationNatural() {
+        tDevice.setOrientationNatural()
+    }
 
     fun swipeUp() {
         val start = Point(screenSize.x / 2, screenSize.y / 5 * 4)
@@ -59,9 +64,7 @@ object TDevice {
         tDevice.pressKeyCode(keyEvent)
     }
 
-    fun pressDeviceBackButton() {
-        tDevice.pressBack()
-    }
+    fun pressDeviceBackButton() = tDevice.pressBack()
 
     /** Сохранить файл [fileName] во внешний кеш приложения. Требуется только имя файла, не полный путь */
     fun dumpScreen(fileName: String): String {
@@ -71,11 +74,7 @@ object TDevice {
         return out.canonicalPath
     }
 
-    fun pressDeviceHomeButton() {
-        tDevice.pressHome()
-    }
+    fun pressDeviceHomeButton() = tDevice.pressHome()
 
-    fun pressDeviceEnter() {
-        tDevice.pressEnter()
-    }
+    fun pressDeviceEnter() = tDevice.pressEnter()
 }
