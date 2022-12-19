@@ -43,7 +43,12 @@ internal class EViewGenericImpl(private val eView: ViewInteraction) : TIViewGene
     }
 
     override fun isVisible(timeout: Long) {
-        isExists(timeout)
+//        isExists(timeout)
+        TWait.forViewInteraction(
+            eView,
+            ViewAssertions.matches(ViewMatchers.withEffectiveVisibility(ViewMatchers.Visibility.VISIBLE)),
+            timeout
+        )
     }
 
     override fun isGone(timeout: Long) {
