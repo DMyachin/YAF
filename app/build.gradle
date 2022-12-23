@@ -10,13 +10,12 @@ android {
     defaultConfig {
         minSdk 24
         targetSdk 33
-        versionCode 125
-        /** https://semver.org/spec/v2.0.0.html: МАЖОР.МИНОР.ПАТЧ
-         * МАЖОР: значительное изменение API, которое привело к потере обратной совместимости
-         * МИНОР: добавление новой функциональности, не приводящее к потере обратной совместимости. Удаление ранее
-         * деприкейченного API сюда же, т.к. считаем, что депрекейтед был устранён в клиентах давно
-         * ПАТЧ: исправления или незначительное добавление кода. Добавление нового пакета - сюда */
-        versionName "2.18.2"
+        versionCode 126
+        /** https://semver.org/spec/v2.0.0.html: MAJOR.MINOR.PATCH
+         * MAJOR version when you make incompatible API changes
+         * MINOR version when you add functionality in a backwards compatible manner
+         * PATCH: version when you make backwards compatible bug fixes */
+        versionName "2.18.3"
     }
 
     buildTypes {
@@ -39,11 +38,9 @@ android {
 }
 
 dependencies {
-    // Поддержка Котлина, корутин
     implementation 'androidx.core:core-ktx:1.9.0'
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4'
 
-    // Тесты
     implementation 'junit:junit:4.13.2'
     implementation 'androidx.test.ext:junit:1.1.4'
     implementation 'androidx.test.espresso:espresso-core:3.5.0'
