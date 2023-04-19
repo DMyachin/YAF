@@ -9,12 +9,12 @@ android {
     defaultConfig {
         minSdk 24
         targetSdk 33
-        versionCode 127
+        versionCode 128
         /** https://semver.org/spec/v2.0.0.html: MAJOR.MINOR.PATCH
          * MAJOR version when you make incompatible API changes
          * MINOR version when you add functionality in a backwards compatible manner
          * PATCH: version when you make backwards compatible bug fixes */
-        versionName "2.18.4"
+        versionName "2.19.0"
     }
 
     buildTypes {
@@ -32,8 +32,10 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
     kotlinOptions {
-        jvmTarget = JavaVersion.VERSION_1_8.toString()
+        jvmTarget = 1.8
     }
+
+    namespace 'xyz.myachin.yaf'
 }
 
 dependencies {
