@@ -75,7 +75,7 @@ internal object TWait {
         throw TUiObject2StateFail(uView)
     }
 
-    internal fun forUiObjectText(
+    internal fun forUiObjectTextContains(
         uView: UiObject,
         uiFunc: (UiObject) -> String,
         text: String,
@@ -88,7 +88,33 @@ internal object TWait {
         throw TUiObjectStateFail(uView)
     }
 
-    internal fun forUiObjectText(
+    internal fun forUiObjectTextIs(
+        uView: UiObject,
+        uiFunc: (UiObject) -> String,
+        text: String,
+        timeout: Long
+    ) {
+        val end = end(timeout)
+        while (SystemClock.elapsedRealtime() <= end) {
+            if (uiFunc(uView) == text) return
+        }
+        throw TUiObjectStateFail(uView)
+    }
+
+    internal fun forUiObject2TextIs(
+        uView: UiObject2,
+        uiFunc: (UiObject2) -> String,
+        text: String,
+        timeout: Long
+    ) {
+        val end = end(timeout)
+        while (SystemClock.elapsedRealtime() <= end) {
+            if (uiFunc(uView) == text) return
+        }
+        throw TUiObject2StateFail(uView)
+    }
+
+    internal fun forUiObject2TextContains(
         uView: UiObject2,
         uiFunc: (UiObject2) -> String,
         text: String,
@@ -101,3 +127,4 @@ internal object TWait {
         throw TUiObject2StateFail(uView)
     }
 }
+
