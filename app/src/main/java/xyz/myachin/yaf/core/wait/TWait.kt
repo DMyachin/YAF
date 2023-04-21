@@ -1,7 +1,6 @@
 package xyz.myachin.yaf.core.wait
 
 import android.os.SystemClock
-import androidx.test.espresso.NoMatchingViewException
 import androidx.test.espresso.ViewAssertion
 import androidx.test.espresso.ViewInteraction
 import androidx.test.uiautomator.UiObject
@@ -20,13 +19,8 @@ internal object TWait {
             try {
                 eView.check(matches)
                 return
-            } catch (throwable: Throwable) {
-                when (throwable) {
-                    is AssertionError, is NoMatchingViewException -> {
-                        if (SystemClock.elapsedRealtime() >= end) throw throwable
-                    }
-                    else -> throw throwable
-                }
+            } catch (err: Throwable) {
+                if (SystemClock.elapsedRealtime() >= end) throw err
             }
         }
     }
