@@ -53,7 +53,7 @@ internal class UbViewGenericImpl(private val uView: UiObject2) : TIViewGeneric {
     }
 
     override fun isContentDescription(text: String, timeout: Long) {
-        TWait.forUiObjectText(uView, UiObject2::getContentDescription, text, timeout)
+        TWait.forUiObject2TextContains(uView, UiObject2::getContentDescription, text, timeout)
     }
 
     override fun contentDesc(): String {

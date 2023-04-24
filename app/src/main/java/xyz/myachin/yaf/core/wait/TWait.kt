@@ -1,7 +1,6 @@
 package xyz.myachin.yaf.core.wait
 
 import android.os.SystemClock
-import androidx.test.espresso.NoMatchingViewException
 import androidx.test.espresso.ViewAssertion
 import androidx.test.espresso.ViewInteraction
 import androidx.test.uiautomator.UiObject
@@ -20,13 +19,8 @@ internal object TWait {
             try {
                 eView.check(matches)
                 return
-            } catch (throwable: Throwable) {
-                when (throwable) {
-                    is AssertionError, is NoMatchingViewException -> {
-                        if (SystemClock.elapsedRealtime() >= end) throw throwable
-                    }
-                    else -> throw throwable
-                }
+            } catch (err: Throwable) {
+                if (SystemClock.elapsedRealtime() >= end) throw err
             }
         }
     }
@@ -75,7 +69,7 @@ internal object TWait {
         throw TUiObject2StateFail(uView)
     }
 
-    internal fun forUiObjectText(
+    internal fun forUiObjectTextContains(
         uView: UiObject,
         uiFunc: (UiObject) -> String,
         text: String,
@@ -88,7 +82,33 @@ internal object TWait {
         throw TUiObjectStateFail(uView)
     }
 
-    internal fun forUiObjectText(
+    internal fun forUiObjectTextIs(
+        uView: UiObject,
+        uiFunc: (UiObject) -> String,
+        text: String,
+        timeout: Long
+    ) {
+        val end = end(timeout)
+        while (SystemClock.elapsedRealtime() <= end) {
+            if (uiFunc(uView) == text) return
+        }
+        throw TUiObjectStateFail(uView)
+    }
+
+    internal fun forUiObject2TextIs(
+        uView: UiObject2,
+        uiFunc: (UiObject2) -> String,
+        text: String,
+        timeout: Long
+    ) {
+        val end = end(timeout)
+        while (SystemClock.elapsedRealtime() <= end) {
+            if (uiFunc(uView) == text) return
+        }
+        throw TUiObject2StateFail(uView)
+    }
+
+    internal fun forUiObject2TextContains(
         uView: UiObject2,
         uiFunc: (UiObject2) -> String,
         text: String,
@@ -101,3 +121,4 @@ internal object TWait {
         throw TUiObject2StateFail(uView)
     }
 }
+
