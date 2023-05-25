@@ -10,12 +10,12 @@ android {
     defaultConfig {
         minSdk 24
         targetSdk 33
-        versionCode 130
+        versionCode 131
         /** https://semver.org/spec/v2.0.0.html: MAJOR.MINOR.PATCH
          * MAJOR version when you make incompatible API changes
          * MINOR version when you add functionality in a backwards compatible manner
          * PATCH: version when you make backwards compatible bug fixes */
-        versionName "2.19.3"
+        versionName "2.20.0"
     }
 
     buildTypes {
