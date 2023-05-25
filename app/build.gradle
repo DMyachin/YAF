@@ -9,12 +9,12 @@ android {
     defaultConfig {
         minSdk 24
         targetSdk 33
-        versionCode 128
+        versionCode 129
         /** https://semver.org/spec/v2.0.0.html: MAJOR.MINOR.PATCH
          * MAJOR version when you make incompatible API changes
          * MINOR version when you add functionality in a backwards compatible manner
          * PATCH: version when you make backwards compatible bug fixes */
-        versionName '2.19.1'
+        versionName "2.19.2"
     }
 
     buildTypes {
@@ -32,15 +32,15 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
     kotlinOptions {
-        jvmTarget = '1.8'
+        jvmTarget = JavaVersion.VERSION_1_8.toString()
     }
 
-    namespace 'xyz.myachin.yaf'
+    namespace "xyz.myachin.yaf"
 }
 
 dependencies {
-    implementation 'androidx.core:core-ktx:1.10.0'
-    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4'
+    implementation 'androidx.core:core-ktx:1.10.1'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.1'
 
     implementation 'junit:junit:4.13.2'
     implementation 'androidx.test.ext:junit:1.1.5'
