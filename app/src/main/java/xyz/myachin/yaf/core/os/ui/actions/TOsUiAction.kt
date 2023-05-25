@@ -4,8 +4,6 @@ import android.content.Intent
 import android.os.Bundle
 import android.os.SystemClock
 import android.util.Log
-import android.widget.Toast
-import androidx.test.internal.runner.junit4.statement.UiThreadStatement
 import xyz.myachin.yaf.core.T_EXTENDED_WAIT
 import xyz.myachin.yaf.core.T_LONG_WAIT
 import xyz.myachin.yaf.core.device.TDevice
@@ -48,13 +46,6 @@ object TOsUiAction {
             return
         }
         throw TLaunchActivityNotExistsError(TAppContext.packageName)
-    }
-
-    /** Показ тоста только изнутри тестов */
-    fun showToastFromTest(text: String) {
-        UiThreadStatement.runOnUiThread {
-            Toast.makeText(TAppContext, text, Toast.LENGTH_SHORT).show()
-        }
     }
 
     fun startActivity(intent: Intent, bundle: Bundle?) {
