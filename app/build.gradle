@@ -15,7 +15,7 @@ android {
          * MAJOR version when you make incompatible API changes
          * MINOR version when you add functionality in a backwards compatible manner
          * PATCH: version when you make backwards compatible bug fixes */
-        versionName "2.20.2"
+        versionName "2.20.3"
     }
 
     buildTypes {
