@@ -1,7 +1,6 @@
 plugins {
     id 'com.android.library'
     id 'kotlin-android'
-    id 'maven-publish'
 }
 
 android {
@@ -10,12 +9,12 @@ android {
     defaultConfig {
         minSdk 24
         targetSdk 33
-        versionCode 133
+        versionCode 134
         /** https://semver.org/spec/v2.0.0.html: MAJOR.MINOR.PATCH
          * MAJOR version when you make incompatible API changes
          * MINOR version when you add functionality in a backwards compatible manner
          * PATCH: version when you make backwards compatible bug fixes */
-        versionName "2.20.2"
+        versionName "2.20.4"
     }
 
     buildTypes {
