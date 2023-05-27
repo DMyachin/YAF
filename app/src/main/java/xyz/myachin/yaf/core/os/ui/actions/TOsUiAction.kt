@@ -17,8 +17,10 @@ import xyz.myachin.yaf.ui.tView.lowlevel.checker.interfaces.TIViewGeneric
 object TOsUiAction {
     private const val TAG = "TOsUiActions"
 
-    private const val defaultFlags =
-        Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NO_HISTORY or Intent.FLAG_ACTIVITY_NO_ANIMATION
+    private const val defaultFlags = Intent.FLAG_ACTIVITY_NEW_TASK or
+        Intent.FLAG_ACTIVITY_CLEAR_TASK or
+        Intent.FLAG_ACTIVITY_NO_HISTORY or
+        Intent.FLAG_ACTIVITY_NO_ANIMATION
 
     /** Запускает приложение типа тапом по иконке. Нельзя использовать для запуска приложений-обёрток в Espresso.
      * @see [launchSelf] */
