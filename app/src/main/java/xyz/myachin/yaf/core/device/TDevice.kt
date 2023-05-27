@@ -10,7 +10,6 @@ import xyz.myachin.yaf.core.os.TOs.tDevice
 import java.io.File
 import kotlin.concurrent.thread
 
-
 /** Working with DEVICE but not OS or apps */
 object TDevice {
     private val TAG = TDevice::class.java.simpleName
@@ -36,33 +35,27 @@ object TDevice {
         pressDeviceBackButton()
     }
 
-    /** Для отладки. Не использовать в реальном коде */
+    /** Для отладки. Не использовать в реальном коде! */
     val rawDevice = tDevice
 
     fun isScreenOn() = tDevice.isScreenOn
 
-    fun wakeUp() {
-        tDevice.wakeUp()
-    }
+    fun wakeUp() = tDevice.wakeUp()
 
     fun sleep(timeout: Long = T_SHORT_WAIT) {
         tDevice.sleep()
         SystemClock.sleep(timeout)
     }
 
-    fun setOrientationNatural() {
-        tDevice.setOrientationNatural()
-    }
+    fun setOrientationNatural() = tDevice.setOrientationNatural()
 
-    fun swipeUp() {
+    fun swipeUp(): Boolean {
         val start = Point(screenSize.x / 2, screenSize.y / 5 * 4)
         val end = Point(start.x, start.y / 5)
-        tDevice.swipe(arrayOf(start, end), 10)
+        return tDevice.swipe(arrayOf(start, end), 10)
     }
 
-    fun pressKeyCode(keyEvent: Int) {
-        tDevice.pressKeyCode(keyEvent)
-    }
+    fun pressKeyCode(keyEvent: Int) = tDevice.pressKeyCode(keyEvent)
 
     fun pressDeviceBackButton() = tDevice.pressBack()
 
