@@ -4,8 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.os.SystemClock
 import android.util.Log
-import xyz.myachin.yaf.core.T_EXTENDED_WAIT
-import xyz.myachin.yaf.core.T_LONG_WAIT
+import xyz.myachin.yaf.core.T_SHORT_WAIT
 import xyz.myachin.yaf.core.device.TDevice
 import xyz.myachin.yaf.core.exceptions.TLaunchActivityNotExistsError
 import xyz.myachin.yaf.core.os.TOs.TAppContext
@@ -18,10 +17,8 @@ import xyz.myachin.yaf.ui.tView.lowlevel.checker.interfaces.TIViewGeneric
 object TOsUiAction {
     private const val TAG = "TOsUiActions"
 
-    private const val defaultFlags = Intent.FLAG_ACTIVITY_NEW_TASK or
-            Intent.FLAG_ACTIVITY_CLEAR_TASK or
-            Intent.FLAG_ACTIVITY_NO_HISTORY or
-            Intent.FLAG_ACTIVITY_NO_ANIMATION
+    private const val defaultFlags =
+        Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NO_HISTORY or Intent.FLAG_ACTIVITY_NO_ANIMATION
 
     /** Запускает приложение типа тапом по иконке. Нельзя использовать для запуска приложений-обёрток в Espresso.
      * @see [launchSelf] */
@@ -37,9 +34,7 @@ object TOsUiAction {
     /** Запускает приложение-обёртку. Используется только для Espresso
      * @see startLaunchActivityAsUser */
     fun launchSelf() {
-        val flg = defaultFlags and
-                Intent.FLAG_ACTIVITY_CLEAR_TASK and
-                Intent.FLAG_ACTIVITY_NO_HISTORY
+        val flg = defaultFlags and Intent.FLAG_ACTIVITY_CLEAR_TASK and Intent.FLAG_ACTIVITY_NO_HISTORY
         TPackageManager.getLaunchIntentForPackage(TAppContext.packageName)?.run {
             addFlags(flg)
             TAppContext.startActivity(this)
@@ -60,14 +55,16 @@ object TOsUiAction {
         TAppContext.sendBroadcast(intent, receiverPermission)
     }
 
-    fun openNotifications(timeout: Long = T_LONG_WAIT) {
-        tDevice.openNotification()
+    fun openNotifications(timeout: Long = T_SHORT_WAIT): Boolean {
+        val res = tDevice.openNotification()
         SystemClock.sleep(timeout)
+        return res
     }
 
-    fun openQuickSettings(timeout: Long = T_EXTENDED_WAIT) {
-        tDevice.openQuickSettings()
+    fun openQuickSettings(timeout: Long = T_SHORT_WAIT): Boolean {
+        val res = tDevice.openQuickSettings()
         SystemClock.sleep(timeout)
+        return res
     }
 
     /** Выйти из приложения [fromPkg] по нажатию на кнопку Back */
@@ -77,7 +74,7 @@ object TOsUiAction {
             SystemClock.sleep(500)
             if (tDevice.currentPackageName != fromPkg) return
         }
-        Log.e(TAG, "exitToLauncher: it is possible cannot exit")
+        Log.e(TAG, "exitFromApp: failed to exit from $fromPkg")
     }
 
     /** Выйти из приложения [application] по нажатию на кнопку Back */
@@ -93,7 +90,7 @@ object TOsUiAction {
             TDevice.pressDeviceBackButton()
             SystemClock.sleep(500)
         }
-        Log.e(TAG, "exitToLauncher: it is possible cannot exit from $startPkg")
+        Log.e(TAG, "exitToLauncher: failed to exit from $startPkg")
     }
 
     /** Прокрутка по экрану устройства вверх до нужного [view] за [attempts] попыток */
