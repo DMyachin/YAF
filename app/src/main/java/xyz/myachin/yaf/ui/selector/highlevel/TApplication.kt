@@ -7,6 +7,7 @@ abstract class TApplication {
     val android = TSelector("android")
 
     val gms = TSelector("com.google.android.gms")
+    val gPlay = TSelector("com.android.vending")
 
     val androidSystemUi = TSelector("com.android.systemui")
     val androidPermissionController = TSelector("com.android.permissioncontroller")
