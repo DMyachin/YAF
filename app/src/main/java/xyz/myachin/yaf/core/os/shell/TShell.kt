@@ -112,4 +112,9 @@ internal object TShell {
         setNavbarGestural(false)
         setNavbar3Button(true)
     }
+
+    /** Disable scan application when it installed by ADB */
+    internal fun disableAdbVerifier() {
+        global("verifier_verify_adb_installs", "0")
+    }
 }
