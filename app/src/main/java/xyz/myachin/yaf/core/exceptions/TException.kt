@@ -9,7 +9,7 @@ class TLaunchActivityNotExistsError(pkgName: String) :
     TException("Package $pkgName has not own launch activity")
 
 class TUiObjectStateFail(uiObject: UiObject) :
-    TException("uiObject \"${uiObject.className}\" condition is unacceptable")
+    TException("uiObject \"${uiObject.selector}\" condition is unacceptable")
 
 class TUiObject2StateFail(uiObject2: UiObject2) :
     TException("uiObject \"${uiObject2.className}\" condition is unacceptable")
