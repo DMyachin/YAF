@@ -5,9 +5,13 @@ import xyz.myachin.yaf.tools.datetime.TDateTime.Companion.createFromFormat
 import xyz.myachin.yaf.tools.datetime.TDateTime.Companion.createFromNowDateTime
 import xyz.myachin.yaf.tools.datetime.TDateTime.Companion.createFromNowTime
 import java.text.SimpleDateFormat
-import java.util.*
-import java.util.Calendar.*
-
+import java.util.Calendar.DAY_OF_MONTH
+import java.util.Calendar.JANUARY
+import java.util.Calendar.MONTH
+import java.util.Calendar.YEAR
+import java.util.Date
+import java.util.GregorianCalendar
+import java.util.Locale
 
 /** Uses for date compares. Can be creates with [createFromFormat], [createFromNowTime] or [createFromNowDateTime]*/
 class TDateTime(private val dateTime: Date) {
@@ -28,7 +32,7 @@ class TDateTime(private val dateTime: Date) {
         /** Creates [TDateTime] from current Android's time. Can be used ONLY for HH:mm[:ss] */
         fun createFromNowTime(): TDateTime {
             val calendar = GregorianCalendar()
-            calendar.set(1970, Calendar.JANUARY, 1)
+            calendar.set(1970, JANUARY, 1)
             return TDateTime(calendar.time)
         }
 
