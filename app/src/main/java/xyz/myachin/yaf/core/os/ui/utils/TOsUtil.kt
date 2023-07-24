@@ -32,4 +32,8 @@ object TOsUtil {
     fun getCurrentPkg(): String {
         return tDevice.currentPackageName
     }
+
+    val externalCacheDir get() = TAppContext.externalCacheDir
+
+    val internalCacheDir get() = TAppContext.cacheDir
 }
