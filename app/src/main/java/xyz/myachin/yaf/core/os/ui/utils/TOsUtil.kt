@@ -32,4 +32,10 @@ object TOsUtil {
     fun getCurrentPkg(): String {
         return tDevice.currentPackageName
     }
+
+    /** Cache in `/sdcard/` */
+    val externalCacheDir get() = TAppContext.externalCacheDir
+
+    /** Cache in `/data/data/....` */
+    val internalCacheDir get() = TAppContext.cacheDir
 }
