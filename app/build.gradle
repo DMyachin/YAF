@@ -4,17 +4,17 @@ plugins {
 }
 
 android {
-    compileSdkVersion 34
+    compileSdk 34
 
     defaultConfig {
         minSdk 24
         targetSdk 34
-        versionCode 137
+        versionCode 138
         /** https://semver.org/spec/v2.0.0.html: MAJOR.MINOR.PATCH
          * MAJOR version when you make incompatible API changes
          * MINOR version when you add functionality in a backwards compatible manner
          * PATCH: version when you make backwards compatible bug fixes */
-        versionName "2.21.0"
+        versionName "2.21.1"
     }
 
     buildTypes {
@@ -40,7 +40,7 @@ android {
 
 dependencies {
     implementation 'androidx.core:core-ktx:1.10.1'
-    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.2'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3'
 
     implementation 'junit:junit:4.13.2'
     implementation 'androidx.test.ext:junit:1.1.5'
