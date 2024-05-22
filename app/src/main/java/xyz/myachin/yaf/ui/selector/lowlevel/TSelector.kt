@@ -16,26 +16,54 @@ class TSelector(val appPackage: String) {
     }
 
     /** Не рекомендуется к использованию. Лучше передавать `R.string.name` */
-    fun uiSelectorByContentDescription(description: String): UiSelector {
+    fun uiSelectorByContentDescriptionContains(description: String): UiSelector {
         return UiSelector().descriptionContains(description)
     }
 
     /** Не рекомендуется к использованию. Лучше передавать `R.string.name` */
-    fun bySelectorByContentDescription(description: String): BySelector {
+    fun bySelectorByContentDescriptionContains(description: String): BySelector {
         return By.descContains(description)
     }
 
-    fun uiSelectorByContentDescription(description: Int): UiSelector {
+    fun uiSelectorByContentDescriptionContains(description: Int): UiSelector {
         return UiSelector().descriptionContains(TOsUtil.getText(TOs.TAppContext, description))
     }
 
-    fun bySelectorByContentDescription(description: Int): BySelector {
+    fun bySelectorByContentDescriptionContains(description: Int): BySelector {
         return By.descContains(TOsUtil.getText(TOs.TAppContext, description))
+    }
+
+    /** Не рекомендуется к использованию. Лучше передавать `R.string.name` */
+    fun uiSelectorByContentDescription(description: String): UiSelector {
+        return UiSelector().description(description)
+    }
+
+    /** Не рекомендуется к использованию. Лучше передавать `R.string.name` */
+    fun bySelectorByContentDescription(description: String): BySelector {
+        return By.desc(description)
+    }
+
+    fun uiSelectorByContentDescription(description: Int): UiSelector {
+        return UiSelector().description(TOsUtil.getText(TOs.TAppContext, description))
+    }
+
+    fun bySelectorByContentDescription(description: Int): BySelector {
+        return By.desc(TOsUtil.getText(TOs.TAppContext, description))
     }
 
     /** Не рекомендуется к использованию. Лучше передавать `R.string.name` */
     fun uiSelectorByText(text: String): UiSelector {
         return UiSelector().text(text)
+    }
+
+    /** Не рекомендуется к использованию. Лучше передавать `R.string.name` */
+    fun uiSelectorByTextContains(text: String): UiSelector {
+        return UiSelector().textContains(text);
+    }
+
+    /** Создаёт селектор по части текста */
+    fun uiSelectorByTextContains(text: Int): UiSelector {
+        return UiSelector().textContains(TOsUtil.getText(TOs.TAppContext, text));
     }
 
     /** Не рекомендуется к использованию. Лучше передавать `R.string.name` */
