@@ -3,11 +3,11 @@ package xyz.myachin.yaf.core.os.shell
 import xyz.myachin.yaf.core.os.TOs.tDevice
 
 internal object TShell {
-    private fun shellCommand(command: String): String? {
-        return tDevice.executeShellCommand(command)?.trim()
+    private fun shellCommand(command: String): String {
+        return tDevice.executeShellCommand(command).trim()
     }
 
-    private fun suShellCommand(command: String): String? {
+    private fun suShellCommand(command: String): String {
         return shellCommand("su 0 $command")
     }
 
@@ -28,34 +28,33 @@ internal object TShell {
     }
 
     internal fun getProcessesArgs(): String {
-        return shellCommand("ps -e -o ARGS=CMD")!!
+        return shellCommand("ps -e -o ARGS=CMD")
     }
 
     private fun bootComplete(): Boolean {
-        shellCommand("getprop sys.boot_completed")?.let {
+        shellCommand("getprop sys.boot_completed").let {
             return when (val res = it.trim().replace("\"", "").toInt()) {
                 0 -> false
                 1 -> true
                 else -> throw IllegalArgumentException("Cannot use $res as value")
             }
         }
-        return false
     }
 
-    private fun putSetting(param: String): String? {
+    private fun putSetting(param: String): String {
         return shellCommand("settings put $param")
     }
 
-    private fun global(param: String, value: String): String? {
+    private fun global(param: String, value: String): String {
         return putSetting("global $param $value")
     }
 
-    private fun system(param: String, value: String): String? {
+    private fun system(param: String, value: String): String {
         return putSetting("system $param $value")
     }
 
     internal var autoTime: Boolean
-        get() = shellCommand("settings get global auto_time")?.trim() == "1"
+        get() = shellCommand("settings get global auto_time").trim() == "1"
         set(value) {
             global("auto_time", if (value) "1" else "0")
         }
