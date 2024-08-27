@@ -8,8 +8,8 @@ android {
 
     defaultConfig {
         minSdk 24
-        targetSdk 34
-        versionCode 140
+        targetSdk 35
+        versionCode 141
         /** https://semver.org/spec/v2.0.0.html: MAJOR.MINOR.PATCH
          * MAJOR version when you make incompatible API changes
          * MINOR version when you add functionality in a backwards compatible manner
@@ -36,12 +36,12 @@ android {
 }
 
 dependencies {
-    implementation 'androidx.core:core-ktx:1.12.0'
+    implementation 'androidx.core:core-ktx:1.13.1'
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3'
 
     implementation 'junit:junit:4.13.2'
-    implementation 'androidx.test.ext:junit:1.1.5'
-    implementation 'androidx.test.espresso:espresso-core:3.5.1'
-    implementation 'androidx.test.uiautomator:uiautomator:2.2.0'
-    implementation 'androidx.test:rules:1.5.0'
+    implementation 'androidx.test.ext:junit:1.2.1'
+    implementation 'androidx.test.espresso:espresso-core:3.6.1'
+    implementation 'androidx.test.uiautomator:uiautomator:2.3.0'
+    implementation 'androidx.test:rules:1.6.1'
 }

@@ -9,7 +9,7 @@ class UsWriteableImpl(private val uView: UiObject) : TIWriteable {
     constructor(uiSelector: UiSelector) : this(tDevice.findObject(uiSelector))
 
     override fun setText(text: String) {
-        uView.text = text
+        uView.setText(text)
     }
 
     override fun clearText() {
