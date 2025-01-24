@@ -1,8 +1,8 @@
 package xyz.myachin.yaf.core.framework
 
-/** Базовый интерфейс для всех автотестов. Здесь происходят гарантированные (нужные ВСЕМ) настройки */
+/** Base rule */
 interface TBaseRule {
 
-    /** Для реализации метода нужно использовать [TBaseRuleImpl]. Не забывайте об аннотации `@Rule`! */
+    /** You must return [TBaseRuleImpl] here. Also remember `@Rule`! */
     fun baseRule(): TBaseRuleImpl
 }

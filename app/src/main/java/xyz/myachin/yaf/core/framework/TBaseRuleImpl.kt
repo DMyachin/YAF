@@ -7,17 +7,17 @@ import xyz.myachin.yaf.core.T_MINUTE
 import xyz.myachin.yaf.core.device.TDevice
 import xyz.myachin.yaf.core.os.shell.TShell
 
-/** Выполняет базовые настройки устройства для автотестов */
+/** All tests must use this rule */
 class TBaseRuleImpl : TestRule {
     override fun apply(base: Statement, description: Description): Statement {
         return object : Statement() {
             override fun evaluate() {
                 if (!TShell.isBootComplete) throw IllegalStateException("Critical property sys.boot_completed is not set")
                 TShell.disableAdbVerifier()
-                TShell.setScreenTimeout(30 * T_MINUTE) // 30 minutes
+                TShell.setScreenTimeout(30 * T_MINUTE)
 
-                TDevice.wakeUp()
-                TDevice.setOrientationNatural()
+                TDevice.uiDevice.wakeUp()
+                TDevice.uiDevice.setOrientationNatural()
 
                 TShell.enable3ButtonsNavigation()
                 TShell.disableTransitionAnimationScale()
